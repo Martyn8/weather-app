@@ -1,0 +1,55 @@
+.container {
+  margin: 5% auto;
+}
+
+.app-content {
+  padding: 40px;
+}
+
+.row-today,
+.row-forecast {
+  margin-bottom: 40px;
+}
+
+.today-icon {
+  font-size: 500%;
+  padding: 40px;
+  margin: auto;
+}
+
+.row-today .weather-details {
+  margin-left: 10%;
+}
+
+.row .row-location {
+  margin-top: 30px;
+}
+
+.card-temp,
+.card-location {
+  text-align: center;
+  padding: 10px 40px 10px 40px;
+  font-size: larger;
+}
+
+.row-forecast .row {
+  justify-content: center;
+  margin: 10px;
+  font-size: medium;
+}
+
+.row-forecast .row i {
+  font-size: 200%;
+}
+
+.row-today {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
