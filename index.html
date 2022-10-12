@@ -22,16 +22,39 @@
     <div class="container text-center">
       <div class="card app-content">
         <div class="card-body">
-          <!--<div class="row justify-content-md-center row-today ">-->
-          <div class="row-today">
-            <div class="col col-md-auto panel align-self-center">
+          <div class="row justify-content-evenly row-today">
+            <div class="col-md-4 d-flex justify-content-center">
+              <div class="card today-icon-card">
+                <i class="fa-solid fa-cloud-rain today-icon"></i>
+              </div>
+            </div>
+            <div class="col-md-4 weather-details">
               <div class="row">
-                <div class="card today-icon-card">
-                  <i class="fa-solid fa-cloud-rain today-icon"></i>
+                <div class="card card-temp">
+                  <span id="current-temp">15°C</span>
+                  <span id="min-max-temp">18°/11°</span>
+                </div>
+              </div>
+              <div class="row row-location">
+                <div class="card card-location">
+                  <span class="cityPlace" id="cityPlace">Katowice / PL </span>
+                  <span class="currentTime" id="dayTimePlace"
+                    >Monday xx:xx</span
+                  >
                 </div>
               </div>
             </div>
-            <!--<div class="col col-md-auto panel weather-details">-->
+          </div>
+
+          <!--          
+          
+          <div class="row-today">
+            <div class="col col-md-auto panel align-self-center">
+              <div class="row">
+
+              </div>
+            </div>
+            
             <div class="weather-details">
               <div class="row">
                 <div class="card card-temp">
@@ -49,8 +72,9 @@
               </div>
             </div>
           </div>
+          -->
 
-          <div class="row justify-content-md-center row-forecast">
+          <!-- <div class="row justify-content-md-center row-forecast">
             <div class="col">
               <div class="card day-one">
                 <div class="row icon">
@@ -98,7 +122,7 @@
                 <div class="row day">Friday</div>
               </div>
             </div>
-          </div>
+          </div> -->
 
           <form>
             <input
@@ -127,18 +151,6 @@
             Current location
           </button>
         </div>
-      </div>
-      <div class="signature">
-        <p>
-          Coded by Martyna Jurusik <br />
-          See it
-          <a
-            class="source-code"
-            href="https://github.com/Martyn8/weather-app"
-            target="_blank"
-            >here</a
-          >
-        </p>
       </div>
     </div>
   </body>
