@@ -22,57 +22,36 @@
     <div class="container text-center">
       <div class="card app-content">
         <div class="card-body">
-          <div class="row justify-content-evenly row-today">
+          <div class="row justify-content-center row-today">
             <div class="col-md-4 d-flex justify-content-center">
               <div class="card today-icon-card">
-                <i class="fa-solid fa-cloud-rain today-icon"></i>
+                <img
+                  width="150px"
+                  id="today-icon"
+                  class="today-icon"
+                  src="data:image/jpeg;base64,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"
+                  alt="weather icon"
+                />
               </div>
             </div>
             <div class="col-md-4 weather-details">
+              <div class="row row-location">
+                <div class="card card-location">
+                  <span class="cityPlace" id="cityPlace">Katowice / PL </span>
+                  <span class="currentTime" id="dayTimePlace"
+                    >Monday xx:xx</span
+                  >
+                </div>
+              </div>
               <div class="row">
                 <div class="card card-temp">
                   <span id="current-temp">15°C</span>
                   <span id="min-max-temp">18°/11°</span>
-                </div>
-              </div>
-              <div class="row row-location">
-                <div class="card card-location">
-                  <span class="cityPlace" id="cityPlace">Katowice / PL </span>
-                  <span class="currentTime" id="dayTimePlace"
-                    >Monday xx:xx</span
-                  >
+                  <span> Wind: <span id="wind-speed">7</span> km/h </span>
                 </div>
               </div>
             </div>
           </div>
-
-          <!--          
-          
-          <div class="row-today">
-            <div class="col col-md-auto panel align-self-center">
-              <div class="row">
-
-              </div>
-            </div>
-            
-            <div class="weather-details">
-              <div class="row">
-                <div class="card card-temp">
-                  <span id="current-temp">15°C</span> <br />
-                  <span id="min-max-temp">18°/11°</span>
-                </div>
-              </div>
-              <div class="row row-location">
-                <div class="card card-location">
-                  <span class="cityPlace" id="cityPlace">Katowice / PL </span>
-                  <span class="currentTime" id="dayTimePlace"
-                    >Monday xx:xx</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-          -->
 
           <!-- <div class="row justify-content-md-center row-forecast">
             <div class="col">

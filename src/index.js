@@ -60,16 +60,26 @@ locationButton.addEventListener("click", function (event) {
 function displayWeather(response) {
   let temperatureDispNow = document.querySelector("#current-temp");
   let temperatureDispDay = document.querySelector("#min-max-temp");
+  let currentWInd = document.querySelector("#wind-speed");
+  let icon = document.querySelector("#today-icon");
   let currentTemp = Math.round(response.data.main.temp);
   let maxTemp = Math.round(response.data.main.temp_max);
   let minTemp = Math.round(response.data.main.temp_min);
   let detail = response.data.weather[0].description;
+  let wind = Math.round(response.data.wind.speed);
 
   console.log(response.data);
   console.log(detail);
 
   temperatureDispNow.innerHTML = `${currentTemp}°C  <br/>${detail}`;
   temperatureDispDay.innerHTML = `${maxTemp}°C / ${minTemp}°C`;
-
+  currentWInd.innerHTML = `${wind} `;
+  console.log(icon);
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
   cityPlace.innerHTML = response.data.name;
 }
+
+//UNIT CONVESION
