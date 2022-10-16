@@ -1,10 +1,15 @@
 .container {
-  padding: 10% 50%;
+  padding: 5% 30%;
+}
+
+a#fahrenheit-conv,
+a#celsius-conv {
+  text-decoration: none;
 }
 
 .app-content {
-  padding: 40px;
-
+  margin: 0 20%;
+  padding: 30px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -32,6 +37,10 @@
   max-width: fit-content;
 }
 
+.col-md-4.icon-details {
+  max-width: fit-content;
+}
+
 .weather-details .card {
   padding: 0 30px 0 30px;
 }
@@ -53,6 +62,19 @@
   margin-top: 10px;
 }
 
+.card.card-temp {
+  display: inline;
+}
+
+.today-icon-card {
+  max-width: fit-content;
+}
+
+.card.card-temp .active {
+  color: black;
+  cursor: default;
+  font-weight: bold;
+}
 /* 
 
 
