@@ -75,6 +75,16 @@ a#celsius-conv {
   cursor: default;
   font-weight: bold;
 }
+
+
+.signature {
+  color: gray;
+  font-size: xx-small;
+}
+
+.source-code {
+  text-decoration: none;
+  color: goldenrod;
 /* 
 
 
