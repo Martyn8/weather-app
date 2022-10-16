@@ -76,7 +76,6 @@ a#celsius-conv {
   font-weight: bold;
 }
 
-
 .signature {
   color: gray;
   font-size: xx-small;
@@ -85,6 +84,7 @@ a#celsius-conv {
 .source-code {
   text-decoration: none;
   color: goldenrod;
+}
 /* 
 
 
