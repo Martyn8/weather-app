@@ -79,6 +79,7 @@ a#celsius-conv {
 .signature {
   color: gray;
   font-size: xx-small;
+  margin-top: 10px;
 }
 
 .source-code {
