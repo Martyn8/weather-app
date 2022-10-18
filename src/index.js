@@ -90,6 +90,8 @@ function displayWeather(response) {
     `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   cityPlace.innerHTML = response.data.name;
+
+  displayForecast();
 }
 
 //UNIT CONVESION
@@ -118,4 +120,36 @@ function convertFToC(event) {
   convertedTemp.innerHTML = Math.round(celsiusTemp);
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
+}
+
+//Forecast
+function displayForecast() {
+  let forecastElem = document.querySelector("#row-forecast");
+
+  let forecastHTML = "";
+
+  let days = ["mon", "Tue", "WED", "Thu", "fri"];
+
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `            
+  <div class="col">
+    <div class="card day-one">
+      <div class="row icon">
+        <i class="fa-solid fa-cloud-sun"></i>
+      </div>
+      <div class="row temp">
+        <span class="forecast-max-temp">18°C</span>/<span
+        ="forecast-min-temp"
+        >8°C</span>
+      </div>
+      <div class="row day">${day}</div>
+    </div>
+  </div>`;
+  });
+
+  //forecastHTML += `</div>`;
+
+  forecastElem.innerHTML = forecastHTML;
 }

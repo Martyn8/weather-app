@@ -1,5 +1,6 @@
 .container {
   padding: 5% 30%;
+  padding-bottom: 0;
 }
 
 a#fahrenheit-conv,
@@ -8,8 +9,8 @@ a#celsius-conv {
 }
 
 .app-content {
-  margin: 0 20%;
-  padding: 30px;
+  margin: 0 10%;
+  padding: 20px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
