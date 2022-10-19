@@ -70,6 +70,12 @@ function displayWeather(response) {
   // let temperatureDispDay = document.querySelector("#min-max-temp");
   let currentWInd = document.querySelector("#wind-speed");
   let icon = document.querySelector("#today-icon");
+  console.log(icon);
+  icon.setAttribute(
+    "src",
+    `    http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png
+`
+  );
   celsiusTemp = response.data.temperature.current;
   let currentTemp = Math.round(celsiusTemp);
   let description = document.querySelector("#desc");
@@ -85,12 +91,7 @@ function displayWeather(response) {
   description.innerHTML = `${detail}`;
   //temperatureDispDay.innerHTML = `${maxTemp}°C / ${minTemp}°C`;
   currentWInd.innerHTML = `${wind} `;
-  console.log(icon);
-  icon.setAttribute(
-    "src",
-    `    http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png
-`
-  );
+
   cityPlace.innerHTML = response.data.city;
 
   getForecast();
