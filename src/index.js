@@ -4,7 +4,7 @@ let days = [
   "Sunday",
   "Monday",
   "Tuesday",
-  "wednesday",
+  "Wednesday",
   "Thursday",
   "Friday",
   "Saturday",
@@ -16,12 +16,12 @@ let dayTimeFormatted = `${
 dayTime.innerHTML = dayTimeFormatted;
 
 //WEATHER API
-let apiKey = "210d99196a88b9257ed8cb3535a0a0c5";
+let apiKey = "a19ca124f94a77a526tb0d337eo726eb";
 let celsiusTemp = null;
 
 startLocation();
 function startLocation() {
-  let startUrl = `https://api.openweathermap.org/data/2.5/weather?q=Warsaw&appid=${apiKey}&units=metric`;
+  let startUrl = `https://api.shecodes.io/weather/v1/current?query=Warsaw&key=${apiKey}&units=metric`;
   axios.get(startUrl).then(displayWeather);
 }
 
@@ -33,7 +33,7 @@ submitButton.addEventListener("submit", function (event) {
   let cityPlace = document.querySelector("#cityPlace");
 
   if (cityInput.value) {
-    let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
+    let url = `https://api.shecodes.io/weather/v1/current?query=${cityInput.value}&key=${apiKey}&units=metric`;
 
     axios.get(url).then(displayWeather);
     //console.log(axios.get(url).then(displayWeather));
@@ -41,7 +41,7 @@ submitButton.addEventListener("submit", function (event) {
 });
 
 function makeUrl(x, y) {
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${x}&lon=${y}&appid=${apiKey}&units=metric`;
+  let url = `https://api.shecodes.io/weather/v1/current?lon=${y}&lat=${x}&key=${apiKey}&units=metric`;
 
   console.log(url);
 
@@ -65,16 +65,17 @@ locationButton.addEventListener("click", function (event) {
 });
 
 function displayWeather(response) {
+  console.log(response);
   let temperatureDispNow = document.querySelector("#current-temp");
   // let temperatureDispDay = document.querySelector("#min-max-temp");
   let currentWInd = document.querySelector("#wind-speed");
   let icon = document.querySelector("#today-icon");
-  celsiusTemp = response.data.main.temp;
+  celsiusTemp = response.data.temperature.current;
   let currentTemp = Math.round(celsiusTemp);
   let description = document.querySelector("#desc");
-  let maxTemp = Math.round(response.data.main.temp_max);
-  let minTemp = Math.round(response.data.main.temp_min);
-  let detail = response.data.weather[0].description;
+  // let maxTemp = Math.round(response.data.main.temp_max);
+  // let minTemp = Math.round(response.data.main.temp_min);
+  let detail = response.data.condition.description;
   let wind = Math.round(response.data.wind.speed);
 
   console.log(response.data);
@@ -87,11 +88,12 @@ function displayWeather(response) {
   console.log(icon);
   icon.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `    http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png
+`
   );
-  cityPlace.innerHTML = response.data.name;
+  cityPlace.innerHTML = response.data.city;
 
-  displayForecast();
+  getForecast();
 }
 
 //UNIT CONVESION
@@ -123,7 +125,8 @@ function convertFToC(event) {
 }
 
 //Forecast
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElem = document.querySelector("#row-forecast");
 
   let forecastHTML = "";
@@ -152,4 +155,14 @@ function displayForecast() {
   //forecastHTML += `</div>`;
 
   forecastElem.innerHTML = forecastHTML;
+}
+
+function getForecast() {
+  //
+
+  let forecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=warsaw&key=${apiKey}&units=metric`;
+  //https://api.shecodes.io/weather/v1/forecast?lon={lon}&lat=latitude&key={key}
+  console.log(forecastUrl);
+
+  axios.get(forecastUrl).then(displayForecast);
 }
