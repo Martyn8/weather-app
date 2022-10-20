@@ -94,7 +94,7 @@ function displayWeather(response) {
 
   cityPlace.innerHTML = response.data.city;
 
-  getForecast();
+  getForecast(response.data.city);
 }
 
 //UNIT CONVESION
@@ -126,31 +126,60 @@ function convertFToC(event) {
 }
 
 //Forecast
+
+function formatDay(timestamp) {
+  console.log(timestamp);
+  let date = new Date(timestamp * 1000);
+  console.log(date);
+  let day = date.getDay();
+  console.log(day);
+  let days = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
+
+  return days[day];
+}
+
 function displayForecast(response) {
   console.log(response.data.daily);
   let forecastElem = document.querySelector("#row-forecast");
 
   let forecastHTML = "";
 
-  let days = ["mon", "Tue", "WED", "Thu", "fri"];
+  let forecastData = response.data.daily;
 
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `            
+  forecastData.forEach(function (day, index) {
+    if (index < 5) {
+      let maxTemp = Math.round(day.temperature.maximum);
+      let minTemp = Math.round(day.temperature.minimum);
+      forecastHTML =
+        forecastHTML +
+        `            
   <div class="col">
     <div class="card day-one">
       <div class="row icon">
-        <i class="fa-solid fa-cloud-sun"></i>
+        <img
+          src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+            day.condition.icon
+          }.png"
+          alt="forecast icon"
+        />
       </div>
       <div class="row temp">
-        <span class="forecast-max-temp">18°C</span>/<span
+        <span class="forecast-max-temp">${maxTemp}°C</span>/<span
         ="forecast-min-temp"
-        >8°C</span>
+        >${minTemp}C</span>
       </div>
-      <div class="row day">${day}</div>
+      <div class="row day">${formatDay(day.time)}</div>
     </div>
   </div>`;
+    }
   });
 
   //forecastHTML += `</div>`;
@@ -158,10 +187,10 @@ function displayForecast(response) {
   forecastElem.innerHTML = forecastHTML;
 }
 
-function getForecast() {
+function getForecast(city) {
   //
 
-  let forecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=warsaw&key=${apiKey}&units=metric`;
+  let forecastUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   //https://api.shecodes.io/weather/v1/forecast?lon={lon}&lat=latitude&key={key}
   console.log(forecastUrl);
 
