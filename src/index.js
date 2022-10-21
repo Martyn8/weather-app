@@ -98,6 +98,17 @@ function convertCToF(event) {
   convertedTemp.innerHTML = fahrenheitTemp;
   celsiusLink.classList.remove("active");
   fahrenheitLink.classList.add("active");
+
+  //convert in forecast
+  let allMaxTemp = document.querySelectorAll("#forecast-max-temp");
+  console.log(allMaxTemp);
+
+  allMaxTemp.forEach(function (card) {
+    console.log(card.innerHTML);
+    let fTemp = Math.round(card.innerHTML * (9 / 5) + 32);
+    card.innerHTML = fTemp;
+    let funit = document.querySelector;
+  });
 }
 
 function convertFToC(event) {
@@ -108,9 +119,7 @@ function convertFToC(event) {
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
 }
-
 //Forecast
-
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
 
@@ -144,7 +153,7 @@ function displayForecast(response) {
         forecastHTML +
         `            
   <div class="col">
-    <div class="card day-one">
+    <div class="card day-${index + 1}">
       <div class="row icon">
         <img
           src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
@@ -153,10 +162,10 @@ function displayForecast(response) {
           alt="forecast icon"
         />
       </div>
-      <div class="row temp">
-        <span class="forecast-max-temp">${maxTemp}°C</span>/<span
+      <div class="row temp" id="forecast-rows-temp">
+        <span class="forecast-max-temp" id="forecast-max-temp">${maxTemp}</span>/<span
         ="forecast-min-temp"
-        >${minTemp}C</span>
+        >${minTemp}</span><span class="forecast-unit">°C</span>
       </div>
       <div class="row day">${formatDay(day.time)}</div>
     </div>
