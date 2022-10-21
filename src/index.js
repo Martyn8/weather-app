@@ -100,15 +100,32 @@ function convertCToF(event) {
   fahrenheitLink.classList.add("active");
 
   //convert in forecast
-  let allMaxTemp = document.querySelectorAll("#forecast-max-temp");
-  console.log(allMaxTemp);
+  let allRowsTemp = document.querySelectorAll("#forecast-rows-temp");
+  console.log(allRowsTemp);
 
-  allMaxTemp.forEach(function (card) {
-    console.log(card.innerHTML);
-    let fTemp = Math.round(card.innerHTML * (9 / 5) + 32);
-    card.innerHTML = fTemp;
-    let funit = document.querySelector;
+  allRowsTemp.forEach(function (card) {
+    console.log(card.children["forecast-max-temp"].innerHTML);
+
+    let currentMaxTemp = card.children["forecast-max-temp"].innerHTML;
+    let fMaxTemp = Math.round(currentMaxTemp * (9 / 5) + 32);
+    card.children["forecast-max-temp"].innerHTML = fMaxTemp;
+
+    let currentMinTemp = card.children["forecast-min-temp"].innerHTML;
+    let fMinTemp = Math.round(currentMinTemp * (9 / 5) + 32);
+    card.children["forecast-min-temp"].innerHTML = fMinTemp;
+
+    let currentUnit = card.children["forecast-unit"];
+    currentUnit.innerHTML = "°F";
   });
+
+  // console.log(allMaxTemp);
+
+  // allMaxTemp.forEach(function (card) {
+  //   console.log(card.innerHTML);
+  //   let fTemp = Math.round(card.innerHTML * (9 / 5) + 32);
+  //   card.innerHTML = fTemp;
+  //   let funit = document.querySelector;
+  //});
 }
 
 function convertFToC(event) {
@@ -118,7 +135,27 @@ function convertFToC(event) {
   convertedTemp.innerHTML = Math.round(celsiusTemp);
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
+
+  //convert in forecast
+  let allRowsTemp = document.querySelectorAll("#forecast-rows-temp");
+  console.log(allRowsTemp);
+
+  allRowsTemp.forEach(function (card) {
+    console.log(card.children["forecast-max-temp"].innerHTML);
+
+    let currentMaxTemp = card.children["forecast-max-temp"].innerHTML;
+    let cfMaxTemp = Math.round((5 / 9) * (currentMaxTemp - 32));
+    card.children["forecast-max-temp"].innerHTML = cfMaxTemp;
+
+    let currentMinTemp = card.children["forecast-min-temp"].innerHTML;
+    let cMinTemp = Math.round((5 / 9) * (currentMinTemp - 32));
+    card.children["forecast-min-temp"].innerHTML = cMinTemp;
+
+    let currentUnit = card.children["forecast-unit"];
+    currentUnit.innerHTML = "°C";
+  });
 }
+
 //Forecast
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
@@ -163,9 +200,8 @@ function displayForecast(response) {
         />
       </div>
       <div class="row temp" id="forecast-rows-temp">
-        <span class="forecast-max-temp" id="forecast-max-temp">${maxTemp}</span>/<span
-        ="forecast-min-temp"
-        >${minTemp}</span><span class="forecast-unit">°C</span>
+        <span class="forecast-max-temp" id="forecast-max-temp">${maxTemp}</span>/<span id="forecast-min-temp"
+        >${minTemp}</span><span id="forecast-unit">°C</span>
       </div>
       <div class="row day">${formatDay(day.time)}</div>
     </div>

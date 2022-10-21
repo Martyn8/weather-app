@@ -20,7 +20,7 @@ a#celsius-conv {
 }
 
 .today-icon {
-  padding: 20px 30px;
+  padding: 20px 20px;
   font-size: small;
 }
 
@@ -74,6 +74,7 @@ a#celsius-conv {
 
 .today-icon-card {
   max-width: fit-content;
+  font-size: small;
 }
 
 .card.card-temp .active {
