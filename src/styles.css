@@ -8,10 +8,13 @@ a#celsius-conv {
   text-decoration: none;
 }
 
+.card {
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
 .app-content {
   margin: 0 10%;
   padding: 20px;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 }
 
 .today-icon-card {
